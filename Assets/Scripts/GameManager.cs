@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     
     public void GameOver()
     {
+        Handheld.Vibrate();
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0;
     }
