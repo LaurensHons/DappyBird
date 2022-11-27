@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject gameOverCanvas;
-
+    public GameObject gameCanvas;
+    
     private void Start()
     {
+        gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         Time.timeScale = 1;
     }
@@ -18,7 +20,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Handheld.Vibrate();
+        gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
+
         Time.timeScale = 0;
     }
 

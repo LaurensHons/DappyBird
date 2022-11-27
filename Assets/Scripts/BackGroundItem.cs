@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackGroundItem : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    public float speed;
     
     // Start is called before the first frame update
     void Start()
@@ -17,5 +17,6 @@ public class BackGroundItem : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
+        
     }
 }
