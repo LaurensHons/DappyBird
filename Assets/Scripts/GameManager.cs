@@ -7,22 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject gameOverCanvas;
+    private int score;
 
-    private void Start()
+    public void IncreaseScore()
     {
-        gameOverCanvas.SetActive(false);
-        Time.timeScale = 1;
+        score++;
     }
-    
+
     public void GameOver()
     {
-        gameOverCanvas.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void Replay()
-    {
-        SceneManager.LoadScene(0);
+        Debug.Log("Game Over");
     }
 }

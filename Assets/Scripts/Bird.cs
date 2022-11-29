@@ -1,34 +1,65 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Bird : MonoBehaviour
 {
-    [SerializeField]
-    private float velocity = 2.5f;
-    private Rigidbody2D rb;
+    // Start is called before the first frame update
+    private Vector3 direction;
+    public float gravity = -12f;
+    public float strength = 5f;
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] sprites;
+    private int spriteIndex = 0;
 
-    public GameManager GameManager;
-    
-    void Start()
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * velocity;
+            direction = Vector3.up * strength;
         }
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                direction = Vector3.up * strength;
+            }
+        }
+        // Dit stukje code zorgt ervoor dat de vogel naar beneden valt
+        direction.y += gravity * Time.deltaTime;
+        transform.position += direction * Time.deltaTime;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void AnimateSprite()
     {
-        GameManager.GameOver();
+        spriteIndex++;
+        if (spriteIndex >= sprites.Length)
+        {
+            spriteIndex = 0;
+        }
+        spriteRenderer.sprite = sprites[spriteIndex];
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Obstacle"){
+            FindObjectOfType<GameManager>().GameOver();
+        } else if (other.gameObject.tag == "Scoring")
+        {
+            FindObjectOfType<GameManager>().IncreaseScore();
+        }
     }
 }
