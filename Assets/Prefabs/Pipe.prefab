@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576055640240366524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 0}
-  m_LocalScale: {x: 0.7, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -5.7677, z: 0}
+  m_LocalScale: {x: 0.7, y: 1.0595, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2704048816816122174}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2b790b5135f115b48b2891c65c15416b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0dbf22473af1343ba890481febcf5431, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0000006556511, y: -0.40136123}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.24, y: 8.59}
+    oldSize: {x: 8.6, y: 7.81}
     newSize: {x: 8.4, y: 8.59}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2.24, y: 8.59}
+  m_Size: {x: 2.596765, y: 7.7872777}
   m_EdgeRadius: 0
 --- !u!1 &2002585923353339905
 GameObject:
@@ -185,12 +185,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2b790b5135f115b48b2891c65c15416b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0dbf22473af1343ba890481febcf5431, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.4, y: 8.59}
+  m_Size: {x: 8.6, y: 7.81}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -209,18 +209,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000011920929, y: -0.41028047}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.24, y: 8.59}
-    newSize: {x: 8.4, y: 8.59}
+    oldSize: {x: 8.6, y: 7.81}
+    newSize: {x: 8.6, y: 7.81}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2.24, y: 8.59}
+  m_Size: {x: 2.5967653, y: 7.769439}
   m_EdgeRadius: 0
 --- !u!1 &5942302343491689482
 GameObject:
@@ -232,6 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2704048816816122174}
   - component: {fileID: 703499849866462348}
+  - component: {fileID: 4892810154090059076}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -268,4 +269,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030e6381c8bea8e46b0a9e2dc36c88da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+--- !u!210 &4892810154090059076
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5942302343491689482}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1

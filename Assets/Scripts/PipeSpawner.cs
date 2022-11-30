@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class PipeSpawner : MonoBehaviour
@@ -33,6 +34,8 @@ public class PipeSpawner : MonoBehaviour
     void Update()
     {
         pipeSpeed += pipeSpeedMultiplier * Time.deltaTime;
+        BackGroundItem.speed = pipeSpeed;
+        ParralaxItem.parallaxSpeed = pipeSpeed;
         maxTime = InitalMaxTime / (pipeSpeed / 2);
         
         if (timer > maxTime)
@@ -60,10 +63,6 @@ public class PipeSpawner : MonoBehaviour
     {
         GameObject newpipe = Instantiate(pipePrefab);
         newpipe.transform.position = transform.position + new Vector3(5, Random.Range(-height, height), 0);
-        foreach (var pipe in newpipe.GetComponentsInChildren<BackGroundItem>())
-        {
-            pipe.speed = pipeSpeed;
-        }
         _pipes_not_passed.Add(newpipe);
         Destroy(newpipe, 10);
         
