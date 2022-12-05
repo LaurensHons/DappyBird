@@ -27,7 +27,8 @@ public class PipeSpawner : MonoBehaviour
     {
         pipeSpeed = InitialPipeSpeed;
         maxTime = InitalMaxTime;
-        instantiatePipe();
+        instantiatePipe(5);
+        instantiatePipe(10);
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class PipeSpawner : MonoBehaviour
         
         if (timer > maxTime)
         {
-            instantiatePipe();
+            instantiatePipe(10);
             timer = 0;
         }
 
@@ -59,10 +60,10 @@ public class PipeSpawner : MonoBehaviour
         
     }
 
-    private void instantiatePipe()
+    private void instantiatePipe(int x)
     {
         GameObject newpipe = Instantiate(pipePrefab);
-        newpipe.transform.position = transform.position + new Vector3(5, Random.Range(-height, height), 0);
+        newpipe.transform.position = transform.position + new Vector3(x, Random.Range(-height, height), 0);
         _pipes_not_passed.Add(newpipe);
         Destroy(newpipe, 10);
         

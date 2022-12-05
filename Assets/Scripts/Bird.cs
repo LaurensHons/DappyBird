@@ -15,7 +15,8 @@ public class Bird : MonoBehaviour
     public Sprite[] sprites;
     private int spriteIndex = 0;
 
-    public GameManager GameManager;
+    public GameManager gameManager;
+    private float maxRotation = 0.2f;
     
     void Start()
     {
@@ -32,21 +33,26 @@ public class Bird : MonoBehaviour
             rb.velocity = Vector2.up * velocity;
         }
 
-        if (Time.timeScale != 0) transform.Rotate(new Vector3(0, 0 , rb.velocity.y / 10));
+        if (Time.timeScale != 0)
+        {
+            var zRotation = transform.rotation.z;
+            var yVelocity = rb.velocity.y;
+
+            if ((yVelocity < 0 && zRotation > -maxRotation) || (yVelocity > 0 && zRotation < maxRotation))
+            {
+                transform.Rotate(new Vector3(0, 0, yVelocity / 4));
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        GameManager.GameOver();
+        gameManager.GameOver();
     }
     
     private void AnimateSprite()
     {
-        spriteIndex++;
-        if (spriteIndex >= sprites.Length)
-        {
-            spriteIndex = 0;
-        }
+        spriteIndex = (spriteIndex + 1) % sprites.Length;
         spriteRenderer.sprite = sprites[spriteIndex];
     }
 }
