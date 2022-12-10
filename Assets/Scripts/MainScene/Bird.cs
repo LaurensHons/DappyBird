@@ -11,17 +11,19 @@ public class Bird : MonoBehaviour
     private float velocity = 2.5f;
     private Rigidbody2D rb;
     
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     private int spriteIndex = 0;
 
     public GameManager gameManager;
 
+    public GameObject[] BirdItems;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
+        
     }
 
     // Update is called once per frame
@@ -39,6 +41,27 @@ public class Bird : MonoBehaviour
         }
     }
 
+    public void SetUpBirdItems(BirdItemData[] birdItemData)
+    {
+        foreach (var itemData in birdItemData)
+        {
+            var go = getBirdItem(itemData.Name);
+            if (go == null) continue;
+            Debug.Log("penis");
+            go.SetActive(itemData.Enabled);
+        }
+    }
+
+    private GameObject getBirdItem(string name)
+    {
+        foreach (var birdItem in BirdItems)
+        {
+            if (birdItem.name == name) return birdItem;
+        }
+        Debug.Log("penis");
+        return null;
+    }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         gameManager.GameOver();

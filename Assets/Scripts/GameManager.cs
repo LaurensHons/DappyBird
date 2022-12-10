@@ -13,13 +13,16 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverCanvas;
     public GameObject gameCanvas;
     public ScoreManager scoreManager;
+    public Bird Bird;
     
     private void Start()
     {
         gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         Time.timeScale = 1;
-        LoadFile();
+        var data = SaveInterface.LoadFile();
+        scoreManager.HighScore = data.highScore;
+        if (data.BirdItems != null) Bird.SetUpBirdItems(data.BirdItems);
     }
     
     public void GameOver()
@@ -27,7 +30,8 @@ public class GameManager : MonoBehaviour
         if (scoreManager.HighScore < scoreManager.Score)
         {
             scoreManager.HighScore = scoreManager.Score;
-            SaveFile();
+            var data = new GameData(scoreManager.Score);
+            SaveInterface.SaveFile(data);
         }
         Handheld.Vibrate();
         gameCanvas.SetActive(false);
@@ -41,36 +45,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void SaveFile()
+    public void GoToStartScene()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
-        FileStream file;
-
-        if (File.Exists(destination)) file = File.OpenWrite(destination);
-        else file = File.Create(destination);
-
-        GameData data = new GameData(scoreManager.Score);
-        BinaryFormatter bf = new BinaryFormatter();
-        bf.Serialize(file, data);
-        file.Close();
+        SceneManager.LoadScene(0);
     }
     
-    public void LoadFile()
+    public void GoToCharacterScene()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
-        FileStream file;
- 
-        if(File.Exists(destination)) file = File.OpenRead(destination);
-        else
-        {
-            Debug.LogError("File not found");
-            return;
-        }
- 
-        BinaryFormatter bf = new BinaryFormatter();
-        GameData data = (GameData) bf.Deserialize(file);
-        file.Close();
- 
-        scoreManager.HighScore = data.highScore;
+        SceneManager.LoadScene(2);
     }
+
+    
 }
