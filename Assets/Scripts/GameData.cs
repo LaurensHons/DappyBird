@@ -7,6 +7,9 @@ public class GameData
 {
     public int highScore;
 
+    public BirdItemData[] BirdItems;
+
+    public GameData() { }
     public GameData(int score)
     {
         highScore = score;

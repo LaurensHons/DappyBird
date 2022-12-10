@@ -9,4 +9,9 @@ public class StartButtonScript : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    
+    public void GoToCharacterScene()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
