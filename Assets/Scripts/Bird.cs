@@ -16,8 +16,7 @@ public class Bird : MonoBehaviour
     private int spriteIndex = 0;
 
     public GameManager gameManager;
-    private float maxRotation = 0.2f;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,13 +34,8 @@ public class Bird : MonoBehaviour
 
         if (Time.timeScale != 0)
         {
-            var zRotation = transform.rotation.z;
             var yVelocity = rb.velocity.y;
-
-            if ((yVelocity < 0 && zRotation > -maxRotation) || (yVelocity > 0 && zRotation < maxRotation))
-            {
-                transform.Rotate(new Vector3(0, 0, yVelocity / 4));
-            }
+            rb.transform.eulerAngles = new Vector3(0, 0, yVelocity * 5);
         }
     }
 
