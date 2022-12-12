@@ -23,7 +23,7 @@ public class Bird : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
-        //Input.gyro.enabled = true;
+        Input.gyro.enabled = true;
     }
 
     // Update is called once per frame
@@ -39,8 +39,9 @@ public class Bird : MonoBehaviour
             var yVelocity = rb.velocity.y;
             rb.transform.eulerAngles = Math.Abs(yVelocity) < 18 ? new Vector3(0, 0, yVelocity * 5) : new Vector3(0, 0, Math.Sign(yVelocity) * 90);
         }
-
-        //spriteRenderer.color = new Color(Input.gyro.attitude.normalized.z, 0, 0);
+        
+        var gyro = Input.gyro.gravity.normalized;
+        spriteRenderer.color = new Color(Math.Abs(gyro.x), Math.Abs(gyro.y), Math.Abs(gyro.z));
     }
 
     public void SetUpBirdItems(BirdItemData[] birdItemData)
