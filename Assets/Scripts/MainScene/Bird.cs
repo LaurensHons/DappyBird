@@ -23,7 +23,7 @@ public class Bird : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
-        
+        //Input.gyro.enabled = true;
     }
 
     // Update is called once per frame
@@ -31,14 +31,16 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * velocity;
+            rb.velocity = (float)Math.Sqrt(Input.touchCount) * velocity * Vector2.up;
         }
 
         if (Time.timeScale != 0)
         {
             var yVelocity = rb.velocity.y;
-            rb.transform.eulerAngles = new Vector3(0, 0, yVelocity * 5);
+            rb.transform.eulerAngles = Math.Abs(yVelocity) < 18 ? new Vector3(0, 0, yVelocity * 5) : new Vector3(0, 0, Math.Sign(yVelocity) * 90);
         }
+
+        //spriteRenderer.color = new Color(Input.gyro.attitude.normalized.z, 0, 0);
     }
 
     public void SetUpBirdItems(BirdItemData[] birdItemData)
