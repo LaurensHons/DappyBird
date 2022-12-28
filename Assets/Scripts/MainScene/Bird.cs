@@ -41,7 +41,10 @@ public class Bird : MonoBehaviour
         }
         
         var gyro = Input.gyro.gravity.normalized;
-        spriteRenderer.color = new Color(Math.Abs(gyro.x), Math.Abs(gyro.y), Math.Abs(gyro.z));
+        if (gyro.magnitude != 0)
+        {
+            spriteRenderer.color = new Color(Math.Abs(gyro.x), Math.Abs(gyro.y), Math.Abs(gyro.z));
+        }
     }
 
     public void SetUpBirdItems(BirdItemData[] birdItemData)
@@ -50,7 +53,6 @@ public class Bird : MonoBehaviour
         {
             var go = getBirdItem(itemData.Name);
             if (go == null) continue;
-            Debug.Log("penis");
             go.SetActive(itemData.Enabled);
         }
     }
