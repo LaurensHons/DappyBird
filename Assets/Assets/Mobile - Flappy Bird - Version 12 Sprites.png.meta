@@ -200,6 +200,30 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< Updated upstream
+=======
+    - serializedVersion: 2
+      name: Mobile - Flappy Bird - Version 12 Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 0
+        width: 145
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66df3c5fdc2d7ec4ebbae2b5b06d1111
+      internalID: 30430958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+>>>>>>> Stashed changes
     outline: []
     physicsShape: []
     bones: []
