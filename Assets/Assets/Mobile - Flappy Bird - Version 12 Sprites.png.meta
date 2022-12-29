@@ -200,8 +200,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-<<<<<<< Updated upstream
-=======
     - serializedVersion: 2
       name: Mobile - Flappy Bird - Version 12 Sprites_4
       rect:
@@ -223,7 +221,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
->>>>>>> Stashed changes
     outline: []
     physicsShape: []
     bones: []
