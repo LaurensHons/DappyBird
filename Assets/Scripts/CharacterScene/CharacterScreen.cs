@@ -31,7 +31,7 @@ public class CharacterScreen : MonoBehaviour
                 }
                 if (savedItem != null)
                 {
-                    Debug.Log("found saved item: " + savedItem.ToString());
+                    Debug.Log("found saved item: " + savedItem.Name);
                     birdItem.setData(savedItem);
                 }
             }
