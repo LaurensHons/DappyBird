@@ -41,7 +41,7 @@ public class Bird : MonoBehaviour
         }
         
         var gyro = Input.gyro.gravity.normalized;
-        spriteRenderer.color = new Color(Math.Abs(gyro.x), Math.Abs(gyro.y), Math.Abs(gyro.z));
+        spriteRenderer.color = new Color(1-Math.Abs(gyro.x), 1-Math.Abs(gyro.y), 1-Math.Abs(gyro.z));
     }
 
     public void SetUpBirdItems(BirdItemData[] birdItemData)
